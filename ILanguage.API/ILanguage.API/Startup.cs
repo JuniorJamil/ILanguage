@@ -2,10 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using ILanguage.API.Domain.Persistence.Contexts;
+using ILanguage.API.Domain.Repositories;
+using ILanguage.API.Domain.Services;
+using ILanguage.API.Extensions;
+using ILanguage.API.Persistence.Repositories;
+using ILanguage.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +34,27 @@ namespace ILanguage.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                //options.UseInMemoryDatabase("easynutrition-api-in-memory");
+                options.UseMySQL(Configuration.GetConnectionString("MySQLConnection"));
+
+            });
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
+    
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddRouting(options => options.LowercaseUrls = true);
+
+            services.AddCustomSwagger();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +75,7 @@ namespace ILanguage.API
             {
                 endpoints.MapControllers();
             });
+            app.UseCustomSwagger();
         }
     }
 }
