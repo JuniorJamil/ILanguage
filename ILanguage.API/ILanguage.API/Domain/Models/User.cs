@@ -24,5 +24,8 @@ namespace ILanguage.API.Domain.Models
         public Role Role { get; set; }
 
 
+        public IList<Session> Sessions { get; set; } = new List<Session>();
+
+        public IList<SessionDetails> SessionsDetails { get; set; } = new List<SessionDetails>();
     }
 }

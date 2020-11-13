@@ -14,7 +14,8 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
         public DbSet<User> Users { get; set; }
 
-     
+        public DbSet<Session> Sessions { get; set; }
+        public DbSet<SessionDetails> SessionsDetails { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -87,7 +88,64 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
 
                 );
-            
+
+
+            // Session
+
+            builder.Entity<Session>().ToTable("Session");
+            builder.Entity<Session>().HasKey(p => p.Id);
+            builder.Entity<Session>().Property(p => p.Id)
+                  .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Session>().Property(p => p.StartAt)
+                .IsRequired();
+            builder.Entity<Session>().Property(p => p.EndAt)
+                  .IsRequired();
+            builder.Entity<Session>().Property(p => p.Link)
+                  .IsRequired().HasMaxLength(100);
+
+            builder.Entity<Session>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.Sessions)
+             .HasForeignKey(pt => pt.UserId);
+
+
+            // Agregar data a Session
+            builder.Entity<Session>().HasData
+                (
+                    new Session { Id = 1, StartAt = "Monday, March 24,2019 17:00:00 PM", EndAt = "Monday, March 24 ,2019 18:00:00 PM", Link = "https", UserId = 1 },
+                    new Session { Id = 2, StartAt = "Thursday, March 26,2019 20:00:00 PM", EndAt = "Thurday, March 26 ,2019 21:00:00 PM", Link = "https", UserId = 2 }
+
+                );
+
+            //Entidad SessionDetails
+
+            builder.Entity<SessionDetails>().ToTable("SessionDetail");
+            builder.Entity<SessionDetails>().HasKey(p => p.Id);
+            builder.Entity<SessionDetails>().Property(p => p.Id)
+                 .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<SessionDetails>().Property(p => p.State)
+               .IsRequired().HasMaxLength(100);
+
+
+            builder.Entity<SessionDetails>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.SessionsDetails)
+             .HasForeignKey(pt => pt.UserId);
+
+            builder.Entity<SessionDetails>()
+            .HasOne(pt => pt.Session)
+            .WithMany(p => p.SessionsDetails)
+            .HasForeignKey(pt => pt.SessionId);
+
+            // Agregar data a Sessions Details
+
+            builder.Entity<SessionDetails>().HasData
+                (
+                    new SessionDetails { Id = 1, State = "Disponible", UserId = 1, SessionId = 1 },
+                    new SessionDetails { Id = 2, State = "Disponible", UserId = 2, SessionId = 2 }
+
+                );
+
             // Apply Naming Conventions Policy
 
             builder.ApplySnakeCaseNamingConvention();
