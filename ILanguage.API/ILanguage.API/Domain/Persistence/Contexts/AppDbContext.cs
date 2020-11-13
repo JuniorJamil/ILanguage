@@ -13,7 +13,7 @@ namespace ILanguage.API.Domain.Persistence.Contexts
         public DbSet<Role> Roles { get; set; }
 
         public DbSet<User> Users { get; set; }
-
+        public DbSet<AvailableSchedule> AvailableSchedules { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<SessionDetails> SessionsDetails { get; set; }
 
@@ -137,6 +137,18 @@ namespace ILanguage.API.Domain.Persistence.Contexts
             .WithMany(p => p.SessionsDetails)
             .HasForeignKey(pt => pt.SessionId);
 
+
+            // Entidad AvailableSchedule
+
+            builder.Entity<AvailableSchedule>().ToTable("AvailableSchedules");
+            builder.Entity<AvailableSchedule>().HasKey(p => p.Id);
+            builder.Entity<AvailableSchedule>().Property(p => p.Id);
+            builder.Entity<AvailableSchedule>().Property(p => p.startAt)
+                .IsRequired();
+            builder.Entity<AvailableSchedule>().Property(p => p.endAt)
+                  .IsRequired();
+            builder.Entity<AvailableSchedule>().Property(p => p.state)
+                .IsRequired();
             // Agregar data a Sessions Details
 
             builder.Entity<SessionDetails>().HasData

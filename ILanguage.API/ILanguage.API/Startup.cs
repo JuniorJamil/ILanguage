@@ -49,6 +49,9 @@ namespace ILanguage.API
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
 
+            services.AddScoped<IAvailableScheduleRepository, AvailableScheduleRepository>();
+            services.AddScoped<IAvailableScheduleService, AvailableScheduleService>();
+
             services.AddScoped < ISessionDetailRepository, SessionDetailRepository>();
             services.AddScoped<ISessionDetailService, SessionDetailService>();
 
