@@ -16,6 +16,7 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
         public DbSet<Session> Sessions { get; set; }
         public DbSet<SessionDetails> SessionsDetails { get; set; }
+        public DbSet<Complaint> Complaint { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -146,6 +147,26 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
                 );
 
+
+            //Entidad Complaint
+            builder.Entity<Complaint>().ToTable("Complaint");
+            builder.Entity<Complaint>().HasKey(p => p.Id);
+            builder.Entity<Complaint>().Property(p => p.Id)
+                .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Complaint>().Property(p => p.Description)
+                .IsRequired().HasMaxLength(50);
+
+            builder.Entity<Complaint>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.Complaints)
+             .HasForeignKey(pt => pt.UserId);
+
+
+            // Agregar data a Complaint
+            builder.Entity<Complaint>().HasData
+              (
+                  new Complaint { Id = 1, Description = "Descripcion de prueba complaint", UserId = 1 }
+              );
             // Apply Naming Conventions Policy
 
             builder.ApplySnakeCaseNamingConvention();

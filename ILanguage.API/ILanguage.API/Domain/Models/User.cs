@@ -26,6 +26,8 @@ namespace ILanguage.API.Domain.Models
 
         public IList<Session> Sessions { get; set; } = new List<Session>();
 
+        public IList<Complaint> Complaints { get; set; } = new List<Complaint>();
+
         public IList<SessionDetails> SessionsDetails { get; set; } = new List<SessionDetails>();
     }
 }
