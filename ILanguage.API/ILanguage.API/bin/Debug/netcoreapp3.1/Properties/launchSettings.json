@@ -19,6 +19,7 @@
     },
     "ILanguage.API": {
       "commandName": "Project",
+      "launchBrowser": true,
       "launchUrl": "api-docs/v1",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

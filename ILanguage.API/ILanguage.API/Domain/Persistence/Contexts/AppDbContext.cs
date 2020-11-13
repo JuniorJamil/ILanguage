@@ -80,6 +80,11 @@ namespace ILanguage.API.Domain.Persistence.Contexts
               .WithMany(p => p.Users)
               .HasForeignKey(pt => pt.RoleId);
 
+            builder.Entity<User>()
+         .HasMany(pt => pt.AvailableSchedules)
+         .WithOne(p => p.User)
+         .HasForeignKey(pt => pt.UserId);
+
 
             builder.Entity<User>().HasData
                 (
@@ -149,6 +154,19 @@ namespace ILanguage.API.Domain.Persistence.Contexts
                   .IsRequired();
             builder.Entity<AvailableSchedule>().Property(p => p.state)
                 .IsRequired();
+
+
+            builder.Entity<AvailableSchedule>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.AvailableSchedules)
+             .HasForeignKey(pt => pt.UserId);
+
+            builder.Entity<AvailableSchedule>().HasData
+            (
+                new AvailableSchedule { Id = 1, startAt = "Friday, February 22, 2019 2:00:55 PM", endAt = "Friday, February 22, 2019 2:40:55 PM", state = true, UserId = 1 },
+                new AvailableSchedule { Id = 2, startAt = "Friday, February 22, 2019 5:00:55 PM", endAt = "Friday, February 22, 2019 6:40:55 PM", state = true, UserId = 2 }
+
+            );
             // Agregar data a Sessions Details
 
             builder.Entity<SessionDetails>().HasData

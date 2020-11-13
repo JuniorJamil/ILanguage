@@ -6395,19 +6395,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Acer\\.nuget\\packages\\": {}
+    "C:\\Users\\junior\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Acer\\Documents\\GitHub\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj",
+      "projectUniqueName": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj",
       "projectName": "ILanguage.API",
-      "projectPath": "C:\\Users\\Acer\\Documents\\GitHub\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj",
-      "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Acer\\Documents\\GitHub\\ILanguage\\ILanguage.API\\ILanguage.API\\obj\\",
+      "projectPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj",
+      "packagesPath": "C:\\Users\\junior\\.nuget\\packages\\",
+      "outputPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\junior\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6486,7 +6490,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,11 +13,9 @@ namespace ILanguage.API.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<Role, RoleResource>();
-
             CreateMap<User, UserResource>();
-
             CreateMap<Session, SessionResource>();
-
+            CreateMap<AvailableSchedule, AvailableScheduleResource>();
             CreateMap<SessionDetails, SessionDetailResource>();
 
         }
