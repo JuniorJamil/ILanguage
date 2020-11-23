@@ -58,6 +58,9 @@ namespace ILanguage.API
             services.AddScoped < ISessionDetailRepository, SessionDetailRepository>();
             services.AddScoped<ISessionDetailService, SessionDetailService>();
 
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddAutoMapper(typeof(Startup));

@@ -13,10 +13,12 @@ namespace ILanguage.API.Domain.Persistence.Contexts
         public DbSet<Role> Roles { get; set; }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
         public DbSet<Session> Sessions { get; set; }
         public DbSet<SessionDetails> SessionsDetails { get; set; }
         public DbSet<Complaint> Complaint { get; set; }
+        public DbSet<AvailableSchedule> AvailableSchedules { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -77,9 +79,19 @@ namespace ILanguage.API.Domain.Persistence.Contexts
             builder.Entity<User>().Property(p => p.Linkedin);
 
             builder.Entity<User>()
-              .HasOne(pt => pt.Role)
-              .WithMany(p => p.Users)
-              .HasForeignKey(pt => pt.RoleId);
+           .HasOne(pt => pt.Role)
+             .WithMany(p => p.Users)
+             .HasForeignKey(pt => pt.RoleId);
+
+            builder.Entity<User>()
+             .HasMany(pt => pt.Subscriptions)
+             .WithOne(p => p.User)
+             .HasForeignKey(pt => pt.UserId);
+
+            builder.Entity<User>()
+            .HasMany(pt => pt.AvailableSchedules)
+            .WithOne(p => p.User)
+            .HasForeignKey(pt => pt.UserId);
 
 
             builder.Entity<User>().HasData
@@ -161,17 +173,76 @@ namespace ILanguage.API.Domain.Persistence.Contexts
              .WithMany(p => p.Complaints)
              .HasForeignKey(pt => pt.UserId);
 
-
             // Agregar data a Complaint
             builder.Entity<Complaint>().HasData
               (
                   new Complaint { Id = 1, Description = "Descripcion de prueba complaint", UserId = 1 }
               );
+
+
+
+            // Entidad AvailableSchedule
+
+            builder.Entity<AvailableSchedule>().ToTable("AvailableSchedules");
+            builder.Entity<AvailableSchedule>().HasKey(p => p.Id);
+            builder.Entity<AvailableSchedule>().Property(p => p.Id);
+            builder.Entity<AvailableSchedule>().Property(p => p.startAt)
+                .IsRequired();
+            builder.Entity<AvailableSchedule>().Property(p => p.endAt)
+                  .IsRequired();
+            builder.Entity<AvailableSchedule>().Property(p => p.state)
+                .IsRequired();
+
+            builder.Entity<AvailableSchedule>()
+              .HasOne(pt => pt.User)
+              .WithMany(p => p.AvailableSchedules)
+           .HasForeignKey(pt => pt.UserId);
+
+               builder.Entity<AvailableSchedule>().HasData
+              (
+                  new AvailableSchedule { Id = 1, startAt = "Friday, February 22, 2019 2:00:55 PM", endAt = "Friday, February 22, 2019 2:40:55 PM", state = true, UserId = 1 },
+                  new AvailableSchedule { Id = 2, startAt = "Friday, February 22, 2019 5:00:55 PM", endAt = "Friday, February 22, 2019 6:40:55 PM", state = true, UserId = 2 }
+
+              );
+    
+
+            // Entidad Subscription
+
+            builder.Entity<Subscription>().ToTable("Subscriptions");
+            builder.Entity<Subscription>().HasKey(p => p.Id);
+            builder.Entity<Subscription>().Property(p => p.Id);
+            builder.Entity<Subscription>().Property(p => p.MaxSessions)
+                .IsRequired();
+            builder.Entity<Subscription>().Property(p => p.Price)
+                  .IsRequired();
+            builder.Entity<Subscription>().Property(p => p.Active)
+                .IsRequired();
+
+
+            builder.Entity<Subscription>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.Subscriptions)
+             .HasForeignKey(pt => pt.UserId);
+
+            // Agregar data a Subscription
+            builder.Entity<Subscription>().HasData
+                (
+                    new Subscription { Id = 1, MaxSessions = 4, Price = 10, Active = true, UserId = 1 },
+                    new Subscription { Id = 2, MaxSessions = 1, Price = 13, Active = true, UserId = 2 }
+
+                );
+
             // Apply Naming Conventions Policy
 
             builder.ApplySnakeCaseNamingConvention();
 
         }
+
+
+
+
+
+
 
 
 

@@ -22,6 +22,10 @@ namespace ILanguage.API.Mapping
 
             CreateMap<SessionDetails, SessionDetailResource>();
 
+            CreateMap<Subscription, SubscriptionResource>();
+
+            CreateMap<AvailableSchedule, AvailableScheduleResource>();
+
         }
     }
 }

@@ -26,7 +26,10 @@ namespace ILanguage.API.Domain.Models
 
         public IList<Session> Sessions { get; set; } = new List<Session>();
 
+        public IList<Subscription> Subscriptions { get; set; } = new List<Subscription>();
+
         public IList<Complaint> Complaints { get; set; } = new List<Complaint>();
+        public IList<AvailableSchedule> AvailableSchedules { get; set; } = new List<AvailableSchedule>();
 
         public IList<SessionDetails> SessionsDetails { get; set; } = new List<SessionDetails>();
     }
