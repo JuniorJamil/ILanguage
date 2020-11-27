@@ -21,6 +21,7 @@ namespace ILanguage.API.Mapping
             CreateMap<SaveScheduleResource, Schedule>();
             CreateMap<SaveResourceResource, Resource>();
             CreateMap<SaveReviewResource, Review>();
+            CreateMap<SaveOutcomeReportResource, OutcomeReport>();
 
 
         }

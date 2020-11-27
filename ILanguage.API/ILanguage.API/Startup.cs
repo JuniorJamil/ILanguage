@@ -68,6 +68,10 @@ namespace ILanguage.API
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IReviewService, ReviewService>();
 
+            services.AddScoped<IOutcomeReportRepository, OutcomeReportRepository>();
+            services.AddScoped<IOutcomeReportService, OutcomeReportService>();
+
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddAutoMapper(typeof(Startup));

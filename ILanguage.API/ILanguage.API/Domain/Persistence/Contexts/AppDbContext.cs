@@ -22,6 +22,7 @@ namespace ILanguage.API.Domain.Persistence.Contexts
         public DbSet<SessionDetails> SessionsDetails { get; set; }
         public DbSet<Complaint> Complaint { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<OutcomeReport> OutcomeReports { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -130,6 +131,18 @@ namespace ILanguage.API.Domain.Persistence.Contexts
              .HasOne(pt => pt.User)
              .WithMany(p => p.Sessions)
              .HasForeignKey(pt => pt.UserId);
+
+            builder.Entity<Session>()
+             .HasMany(p => p.Resources)
+             .WithOne(p => p.Session)
+               .HasForeignKey(p => p.SessionId);
+
+            builder.Entity<Session>()
+            .HasMany(p => p.OutcomeReports)
+            .WithOne(p => p.Session)
+            .HasForeignKey(p => p.SessionId);
+
+
 
 
             // Agregar data a Session
@@ -313,6 +326,22 @@ namespace ILanguage.API.Domain.Persistence.Contexts
                    new Review { Id = 4, Starts = 4, Description = "Tiene paciencia para explicar los Temas", UserId = 4 }
 
                );
+
+            //Entidad OutcomeReport
+            builder.Entity<OutcomeReport>().ToTable("OutcomeReports");
+            builder.Entity<OutcomeReport>().HasKey(p => p.Id);
+            builder.Entity<OutcomeReport>().Property(p => p.Id)
+                .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<OutcomeReport>().Property(p => p.Description)
+                .IsRequired().HasMaxLength(500);
+
+            // Agregar data a Diet
+            builder.Entity<OutcomeReport>().HasData
+                (
+                    new OutcomeReport { Id = 1, Description = "Se realizaron los student outcomes establecidos", SessionId = 1 },
+                    new OutcomeReport { Id = 2, Description = "Las pruebas de grámatica resultaron exitosas", SessionId = 2 }
+
+                );
 
             // Apply Naming Conventions Policy
 

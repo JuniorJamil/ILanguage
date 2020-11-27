@@ -17,5 +17,12 @@ namespace ILanguage.API.Domain.Models
         public User User { get; set; }
 
         public IList<SessionDetails> SessionsDetails { get; set; } = new List<SessionDetails>();
+
+        public IList<Resource> Resources { get; set; } = new List<Resource>();
+
+        public IList<OutcomeReport> OutcomeReports { get; set; } = new List<OutcomeReport>();
+
+
+
     }
 }
