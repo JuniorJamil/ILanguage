@@ -15,10 +15,13 @@ namespace ILanguage.API.Domain.Persistence.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
 
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<Review> Review { get; set; }
+
         public DbSet<Session> Sessions { get; set; }
         public DbSet<SessionDetails> SessionsDetails { get; set; }
         public DbSet<Complaint> Complaint { get; set; }
-        public DbSet<AvailableSchedule> AvailableSchedules { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -89,19 +92,26 @@ namespace ILanguage.API.Domain.Persistence.Contexts
              .HasForeignKey(pt => pt.UserId);
 
             builder.Entity<User>()
-            .HasMany(pt => pt.AvailableSchedules)
-            .WithOne(p => p.User)
+             .HasMany(pt => pt.Schedules)
+            .WithOne(p => p.User)       
             .HasForeignKey(pt => pt.UserId);
 
+       
 
             builder.Entity<User>().HasData
-                (
-                    new User { Id = 1, Username = "AlfredoGomez", Password = "Gomez", Name = "Alfredo", Lastname = "Gomez", Birthday = "10/10/1980", Email = "alfredito@gmail.com", Phone = "97531546", Address = "Las Malvinas 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 1 },
-                     new User { Id = 2, Username = "AlfredoGomez", Password = "Gomez", Name = "Alfredo", Lastname = "Gomez", Birthday = "10/10/1980", Email = "alfredito@gmail.com", Phone = "97531546", Address = "Las Malvinas 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 1 }
+      (
+           new User { Id = 1, Username = "Alfredo Gomez", Password = "dbJe*D4xqfd|e]*p&", Name = "Alfredo", Lastname = "Gomez", Birthday = "10/10/1985", Email = "alfredito@gmail.com", Phone = "97531546", Address = "Las Malvinas 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 1 },
+           new User { Id = 2, Username = "Hernesto Sanchez", Password = "1WH1wm%tL#AUsgqB@", Name = "Hernesto", Lastname = "Sanchez", Birthday = "10/10/1990", Email = "hernes@gmail.com", Phone = "97531546", Address = "Las Malvinas 667", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 1 },
+           new User { Id = 3, Username = "Agusto Hernandez", Password = "exCBHH0UdzyGpCxE~", Name = "Agusto", Lastname = "Hernandez", Birthday = "10/10/1970", Email = "augus@gmail.com", Phone = "97532346", Address = "Las Poncinas 314", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 2 },
+           new User { Id = 4, Username = "Jeremy ALfonso", Password = "HYO|@o7XJK@T<^W(^", Name = "Jeremy", Lastname = "ALfonso", Birthday = "10/10/1989", Email = "jere@gmail.com", Phone = "978561234", Address = "Villanueva 454", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 3 },
+           new User { Id = 5, Username = "Augusto Salazar", Password = "1b}%Ct(Th*(0odt1l", Name = "Augusto", Lastname = "Salazar", Birthday = "10/10/1987", Email = "augus_14@gmail.com", Phone = "97512346", Address = "Las doce 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 2 },
+           new User { Id = 6, Username = "Yimmy Neutron", Password = "MW~#o2z2#I)!WjDKR", Name = "Yimmy", Lastname = "Neutron", Birthday = "10/10/1982", Email = "yim23@gmail.com", Phone = "97559746", Address = "CHavin 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 1 },
+           new User { Id = 7, Username = "Steve Robi", Password = "7k<GV(qEe%PHJOFc#", Name = "Steve", Lastname = "Robi", Birthday = "10/10/1990", Email = "steve789@gmail.com", Phone = "97539756", Address = "Cajamarca 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 2 },
+           new User { Id = 8, Username = "Sandro Quispe", Password = "mh$!iPSvXAfCWkh$f", Name = "Sandro", Lastname = "Quispe", Birthday = "10/10/1990", Email = "san23@gmail.com", Phone = "94561546", Address = "Av. Ayacucho 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 3 },
+           new User { Id = 9, Username = "Ali Jamelio", Password = "OHG2|CZ^9Z6#d!*Xf", Name = "Ali", Lastname = "Jamelio", Birthday = "10/10/1987", Email = "alimoha@gmail.com", Phone = "97821546", Address = "Av- Bolivar 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 1 },
+           new User { Id = 10, Username = "Angel Gavidia", Password = "ZNrr&l*xeucG2W(*D", Name = "Angel", Lastname = "Gavidia", Birthday = "10/10/1989", Email = "angel123@gmail.com", Phone = "94861546", Address = "Alfonso Ugarte 123", Active = true, Linkedin = "https:\\afjaowjfiawj.com", RoleId = 4 }
 
-
-                );
-
+      );
 
             // Session
 
@@ -124,11 +134,19 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
             // Agregar data a Session
             builder.Entity<Session>().HasData
-                (
-                    new Session { Id = 1, StartAt = "Monday, March 24,2019 17:00:00 PM", EndAt = "Monday, March 24 ,2019 18:00:00 PM", Link = "https", UserId = 1 },
-                    new Session { Id = 2, StartAt = "Thursday, March 26,2019 20:00:00 PM", EndAt = "Thurday, March 26 ,2019 21:00:00 PM", Link = "https", UserId = 2 }
+                           (
+                               new Session { Id = 1, StartAt = "Monday, March 24,2019 17:00:00 PM", EndAt = "Monday, March 24 ,2019 18:00:00 PM", Link = "https", UserId = 1 },
+                               new Session { Id = 2, StartAt = "Thursday, March 26,2019 20:00:00 PM", EndAt = "Thurday, March 26 ,2019 21:00:00 PM", Link = "https", UserId = 2 },
+                               new Session { Id = 3, StartAt = "Monday, March 13,2019 17:00:00 PM", EndAt = "Monday, March 13 ,2019 18:00:00 PM", Link = "https", UserId = 3 },
+                               new Session { Id = 4, StartAt = "Monday, March 24,2019 16:00:00 PM", EndAt = "Monday, March 24 ,2019 17:00:00 PM", Link = "https", UserId = 4 },
+                               new Session { Id = 5, StartAt = "Monday, March 24,2019 17:00:00 PM", EndAt = "Monday, March 24 ,2019 18:00:00 PM", Link = "https", UserId = 5 },
+                               new Session { Id = 6, StartAt = "Monday, March 24,2019 17:00:00 PM", EndAt = "Monday, March 24 ,2019 18:00:00 PM", Link = "https", UserId = 6 },
+                               new Session { Id = 7, StartAt = "Thursday, March 26,2019 20:00:00 PM", EndAt = "Thurday, March 26 ,2019 21:00:00 PM", Link = "https", UserId = 7 },
+                               new Session { Id = 8, StartAt = "Monday, March 13,2019 17:00:00 PM", EndAt = "Monday, March 13 ,2019 18:00:00 PM", Link = "https", UserId = 8 },
+                               new Session { Id = 9, StartAt = "Monday, March 24,2019 16:00:00 PM", EndAt = "Monday, March 24 ,2019 17:00:00 PM", Link = "https", UserId = 9 },
+                               new Session { Id = 10, StartAt = "Monday, March 24,2019 17:00:00 PM", EndAt = "Monday, March 24 ,2019 18:00:00 PM", Link = "https", UserId = 10 }
 
-                );
+                           );
 
             //Entidad SessionDetails
 
@@ -153,11 +171,20 @@ namespace ILanguage.API.Domain.Persistence.Contexts
             // Agregar data a Sessions Details
 
             builder.Entity<SessionDetails>().HasData
-                (
-                    new SessionDetails { Id = 1, State = "Disponible", UserId = 1, SessionId = 1 },
-                    new SessionDetails { Id = 2, State = "Disponible", UserId = 2, SessionId = 2 }
+                        (
+                            new SessionDetails { Id = 1, State = "Disponible", UserId = 1, SessionId = 1 },
+                            new SessionDetails { Id = 2, State = "Disponible", UserId = 1, SessionId = 2 },
+                            new SessionDetails { Id = 3, State = "Restringida", UserId = 2, SessionId = 3 },
+                            new SessionDetails { Id = 4, State = "Disponible", UserId = 3, SessionId = 4 },
+                            new SessionDetails { Id = 5, State = "Disponible", UserId = 4, SessionId = 5 },
+                            new SessionDetails { Id = 6, State = "Disponible", UserId = 5, SessionId = 6 },
+                            new SessionDetails { Id = 7, State = "Restringida", UserId = 6, SessionId = 7 },
+                            new SessionDetails { Id = 8, State = "Disponible", UserId = 7, SessionId = 8 },
+                            new SessionDetails { Id = 9, State = "Restringida", UserId = 8, SessionId = 9 },
+                            new SessionDetails { Id = 10, State = "Restringida", UserId = 9, SessionId = 10 }
 
-                );
+
+                        );
 
 
             //Entidad Complaint
@@ -183,25 +210,25 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
             // Entidad AvailableSchedule
 
-            builder.Entity<AvailableSchedule>().ToTable("AvailableSchedules");
-            builder.Entity<AvailableSchedule>().HasKey(p => p.Id);
-            builder.Entity<AvailableSchedule>().Property(p => p.Id);
-            builder.Entity<AvailableSchedule>().Property(p => p.startAt)
+            builder.Entity<Schedule>().ToTable("AvailableSchedules");
+            builder.Entity<Schedule>().HasKey(p => p.Id);
+            builder.Entity<Schedule>().Property(p => p.Id);
+            builder.Entity<Schedule>().Property(p => p.StartAt)
                 .IsRequired();
-            builder.Entity<AvailableSchedule>().Property(p => p.endAt)
+            builder.Entity<Schedule>().Property(p => p.EndAt)
                   .IsRequired();
-            builder.Entity<AvailableSchedule>().Property(p => p.state)
+            builder.Entity<Schedule>().Property(p => p.State)
                 .IsRequired();
 
-            builder.Entity<AvailableSchedule>()
+            builder.Entity<Schedule>()
               .HasOne(pt => pt.User)
-              .WithMany(p => p.AvailableSchedules)
+              .WithMany(p => p.Schedules)
            .HasForeignKey(pt => pt.UserId);
 
-               builder.Entity<AvailableSchedule>().HasData
+               builder.Entity<Schedule>().HasData
               (
-                  new AvailableSchedule { Id = 1, startAt = "Friday, February 22, 2019 2:00:55 PM", endAt = "Friday, February 22, 2019 2:40:55 PM", state = true, UserId = 1 },
-                  new AvailableSchedule { Id = 2, startAt = "Friday, February 22, 2019 5:00:55 PM", endAt = "Friday, February 22, 2019 6:40:55 PM", state = true, UserId = 2 }
+                  new Schedule { Id = 1, StartAt = "Friday, February 22, 2019 2:00:55 PM", EndAt = "Friday, February 22, 2019 2:40:55 PM", State = true, UserId = 1 },
+                  new Schedule { Id = 2, StartAt = "Friday, February 22, 2019 5:00:55 PM", EndAt = "Friday, February 22, 2019 6:40:55 PM", State = true, UserId = 2 }
 
               );
     
@@ -226,11 +253,66 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
             // Agregar data a Subscription
             builder.Entity<Subscription>().HasData
-                (
-                    new Subscription { Id = 1, MaxSessions = 4, Price = 10, Active = true, UserId = 1 },
-                    new Subscription { Id = 2, MaxSessions = 1, Price = 13, Active = true, UserId = 2 }
+                     (
+                         new Subscription { Id = 1, MaxSessions = 4, Price = 10, Active = true, UserId = 1 },
+                         new Subscription { Id = 2, MaxSessions = 1, Price = 13, Active = true, UserId = 2 },
+                         new Subscription { Id = 3, MaxSessions = 4, Price = 10, Active = true, UserId = 3 },
+                         new Subscription { Id = 4, MaxSessions = 4, Price = 10, Active = true, UserId = 4 },
+                         new Subscription { Id = 5, MaxSessions = 4, Price = 10, Active = true, UserId = 5 },
+                         new Subscription { Id = 6, MaxSessions = 4, Price = 10, Active = true, UserId = 6 },
+                         new Subscription { Id = 7, MaxSessions = 4, Price = 10, Active = true, UserId = 7 },
+                         new Subscription { Id = 8, MaxSessions = 4, Price = 10, Active = true, UserId = 8 },
+                         new Subscription { Id = 9, MaxSessions = 4, Price = 10, Active = true, UserId = 9 },
+                         new Subscription { Id = 10, MaxSessions = 4, Price = 10, Active = true, UserId = 10 }
+                     );
 
-                );
+
+
+            //Entidad Resource
+            builder.Entity<Resource>().ToTable("Resources");
+            builder.Entity<Resource>().HasKey(p => p.Id);
+            builder.Entity<Resource>().Property(p => p.Id)
+                .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Resource>().Property(p => p.Title)
+                .IsRequired().HasMaxLength(50);
+            builder.Entity<Resource>().Property(p => p.Description)
+                .IsRequired().HasMaxLength(500);
+
+            // Agregar data a Resource
+            builder.Entity<Resource>().HasData
+              (
+                  new Resource { Id = 1, Title = "Notes English ", Description = "To improve your English you must use", SessionId = 1 },
+                  new Resource { Id = 2, Title = "Portuguese notes", Description = "Para melhorar seu inglês você deve usar", SessionId = 2 },
+                  new Resource { Id = 3, Title = "Grámatica Inglés", Description = "To improve your English you must use", SessionId = 3 },
+                  new Resource { Id = 4, Title = "Grámatica Fránces", Description = "Pour améliorer votre anglais, vous devez utiliser: x", SessionId = 4 },
+                  new Resource { Id = 5, Title = "Grámatica Italiano", Description = "Per migliorare il tuo inglese devi usare", SessionId = 5 }
+
+
+              );
+
+            //Entidad Review
+            builder.Entity<Review>().ToTable("Review");
+            builder.Entity<Review>().HasKey(p => p.Id);
+            builder.Entity<Review>().Property(p => p.Id)
+                .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Review>().Property(p => p.Starts);
+            builder.Entity<Review>().Property(p => p.Description)
+                .IsRequired().HasMaxLength(50);
+
+            builder.Entity<Review>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.Reviews)
+             .HasForeignKey(pt => pt.UserId);
+
+            // Agregar data a Review
+            builder.Entity<Review>().HasData
+               (
+                   new Review { Id = 1, Starts = 5, Description = "Muy Bueno con la grámatica", UserId = 1 },
+                    new Review { Id = 2, Starts = 1, Description = "Estoy entendiendo cada vez más los temas", UserId = 2 },
+                     new Review { Id = 3, Starts = 3, Description = "Profesor de calidad, Se le entiende todo", UserId = 3 },
+                   new Review { Id = 4, Starts = 4, Description = "Tiene paciencia para explicar los Temas", UserId = 4 }
+
+               );
 
             // Apply Naming Conventions Policy
 

@@ -5,15 +5,13 @@ using System.Threading.Tasks;
 
 namespace ILanguage.API.Domain.Models
 {
-    public class AvailableSchedule
+    public class Review
     {
         public int Id { get; set; }
-        public string startAt { get; set; }
-        public string endAt { get; set; }
-        public bool state { get; set; }
-
+        public string Description { get; set; }
+        public int Starts { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-
     }
+
 }

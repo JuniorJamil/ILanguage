@@ -52,14 +52,21 @@ namespace ILanguage.API
             services.AddScoped<ISessionRepository, SessionRepository>();
             services.AddScoped<ISessionService, SessionService>();
 
-            services.AddScoped<IAvailableScheduleRepository, AvailableScheduleRepository>();
-            services.AddScoped<IAvailableScheduleService, AvailableScheduleService>();
+            services.AddScoped<IScheduleRepository, ScheduleRepository>();
+            services.AddScoped<IScheduleService, ScheduleService>();
 
             services.AddScoped < ISessionDetailRepository, SessionDetailRepository>();
             services.AddScoped<ISessionDetailService, SessionDetailService>();
 
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+
+
+            services.AddScoped<IResourceRepository, ResourceRepository>();
+            services.AddScoped<IResourceService, ResourceService>();
+
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IReviewService, ReviewService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
