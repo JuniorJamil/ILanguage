@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WawLnzjN6N8n2y78AmJPPvjY0sa+9wliqePn1irnIlY2lsE6KauBr9OrUchcH3LNBN4ukugtpQXVBYX3a8ZaAA==",
+  "dgSpecHash": "5qA9KYLCvgPr+OPzs3oh7NZGkHH48tOV9xcYF6BNp0kceSInHAqkT5JdMK2lQzwhrle1m0h5MCDDaIHLVdhYHA==",
   "success": true,
-  "projectFilePath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj",
+  "projectFilePath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\Backend\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\junior\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\junior\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
