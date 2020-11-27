@@ -8631,11 +8631,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API.Test\\ILanguage.API.Test.csproj",
+      "projectUniqueName": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\Backend\\ILanguage\\ILanguage.API\\ILanguage.API.Test\\ILanguage.API.Test.csproj",
       "projectName": "ILanguage.API.Test",
-      "projectPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API.Test\\ILanguage.API.Test.csproj",
+      "projectPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\Backend\\ILanguage\\ILanguage.API\\ILanguage.API.Test\\ILanguage.API.Test.csproj",
       "packagesPath": "C:\\Users\\junior\\.nuget\\packages\\",
-      "outputPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API.Test\\obj\\",
+      "outputPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\Backend\\ILanguage\\ILanguage.API\\ILanguage.API.Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8654,8 +8654,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj": {
-              "projectPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\semana 15\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj"
+            "G:\\6TO ciclo\\Diseño Y Patrones De Software\\Backend\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj": {
+              "projectPath": "G:\\6TO ciclo\\Diseño Y Patrones De Software\\Backend\\ILanguage\\ILanguage.API\\ILanguage.API\\ILanguage.API.csproj"
             }
           }
         }
