@@ -114,9 +114,6 @@ G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\IL
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.csprojAssemblyReference.cache
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.AssemblyInfoInputs.cache
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.AssemblyInfo.cs
-G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.csproj.CoreCompileInputs.cache
-G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.MvcApplicationPartsAssemblyInfo.cs
-G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.MvcApplicationPartsAssemblyInfo.cache
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.RazorTargetAssemblyInfo.cache
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.csproj.CopyComplete
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\staticwebassets\ILanguage.API.StaticWebAssets.Manifest.cache
@@ -124,3 +121,6 @@ G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\IL
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.dll
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.pdb
 G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.genruntimeconfig.cache
+G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.csproj.CoreCompileInputs.cache
+G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.MvcApplicationPartsAssemblyInfo.cs
+G:\6TO ciclo\Diseño Y Patrones De Software\semana 15\ILanguage\ILanguage.API\ILanguage.API\obj\Debug\netcoreapp3.1\ILanguage.API.MvcApplicationPartsAssemblyInfo.cache
