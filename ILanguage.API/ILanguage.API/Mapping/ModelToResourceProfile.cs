@@ -24,7 +24,9 @@ namespace ILanguage.API.Mapping
 
             CreateMap<Subscription, SubscriptionResource>();
 
-            CreateMap<AvailableSchedule, AvailableScheduleResource>();
+            CreateMap<Schedule, ScheduleResource>();
+
+            CreateMap<Resource, ResourceResource>();
 
         }
     }

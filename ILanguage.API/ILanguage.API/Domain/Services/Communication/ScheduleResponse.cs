@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ILanguage.API.Domain.Services.Communication
 {
-    public class AvailableScheduleResponse : BaseResponse<AvailableSchedule>
+    public class ScheduleResponse : BaseResponse<Schedule>
     {
-        public AvailableScheduleResponse(AvailableSchedule resource) : base(resource)
+        public ScheduleResponse(Schedule resource) : base(resource)
         {
         }
 
-        public AvailableScheduleResponse(string message) : base(message)
+        public ScheduleResponse(string message) : base(message)
         {
         }
 
