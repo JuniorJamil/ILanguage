@@ -20,6 +20,8 @@ namespace ILanguage.API.Mapping
             CreateMap<SaveSubscriptionResource, Subscription>();
             CreateMap<SaveScheduleResource, Schedule>();
             CreateMap<SaveResourceResource, Resource>();
+            CreateMap<SaveReviewResource, Review>();
+
 
         }
 

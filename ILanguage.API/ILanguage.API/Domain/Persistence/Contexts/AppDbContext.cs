@@ -16,6 +16,7 @@ namespace ILanguage.API.Domain.Persistence.Contexts
         public DbSet<Subscription> Subscriptions { get; set; }
 
         public DbSet<Resource> Resources { get; set; }
+        public DbSet<Review> Review { get; set; }
 
         public DbSet<Session> Sessions { get; set; }
         public DbSet<SessionDetails> SessionsDetails { get; set; }
@@ -288,6 +289,31 @@ namespace ILanguage.API.Domain.Persistence.Contexts
 
 
               );
+
+            //Entidad Review
+            builder.Entity<Review>().ToTable("Review");
+            builder.Entity<Review>().HasKey(p => p.Id);
+            builder.Entity<Review>().Property(p => p.Id)
+                .IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Review>().Property(p => p.Starts);
+            builder.Entity<Review>().Property(p => p.Description)
+                .IsRequired().HasMaxLength(50);
+
+            builder.Entity<Review>()
+             .HasOne(pt => pt.User)
+             .WithMany(p => p.Reviews)
+             .HasForeignKey(pt => pt.UserId);
+
+            // Agregar data a Review
+            builder.Entity<Review>().HasData
+               (
+                   new Review { Id = 1, Starts = 5, Description = "Muy Bueno con la grámatica", UserId = 1 },
+                    new Review { Id = 2, Starts = 1, Description = "Estoy entendiendo cada vez más los temas", UserId = 2 },
+                     new Review { Id = 3, Starts = 3, Description = "Profesor de calidad, Se le entiende todo", UserId = 3 },
+                   new Review { Id = 4, Starts = 4, Description = "Tiene paciencia para explicar los Temas", UserId = 4 }
+
+               );
+
             // Apply Naming Conventions Policy
 
             builder.ApplySnakeCaseNamingConvention();

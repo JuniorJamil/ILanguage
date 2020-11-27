@@ -28,6 +28,8 @@ namespace ILanguage.API.Mapping
 
             CreateMap<Resource, ResourceResource>();
 
+            CreateMap<Review, ReviewResource>();
+
         }
     }
 }

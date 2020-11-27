@@ -30,6 +30,7 @@ namespace ILanguage.API.Domain.Models
 
         public IList<Complaint> Complaints { get; set; } = new List<Complaint>();
         public IList<Schedule> Schedules { get; set; } = new List<Schedule>();
+        public IList<Review> Reviews { get; set; } = new List<Review>();
 
         public IList<SessionDetails> SessionsDetails { get; set; } = new List<SessionDetails>();
     }
